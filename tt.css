@@ -1,0 +1,90 @@
+body {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  /* font-family: Futura; */
+  margin: 50px;
+  font-size: 20px;
+}
+
+#heading {
+  font-size: 35px;
+}
+#toprow {
+  display: flex;
+  height: 270px;
+}
+#deckhold {
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+  width: 200px
+}
+#elcountbox{
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  width: 200px
+}
+#deck {
+  padding: 5px;
+  border: 1px solid black;
+  height: 100%;
+}
+#db, #eb {
+  font-size: 20px;
+}
+#db {
+  margin-bottom: 25px;
+}
+#eb{
+  margin-bottom: 10px;
+}
+#elcount {
+  margin-bottom: 5px;
+  margin-top: 11px;
+}
+#goodpol, #badpol{
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+#goodpol {
+  color: royalblue;
+}
+#badpol {
+  color: maroon;
+}
+#drawn {
+  margin-left: 30px;
+  width: 200px;
+  font-size: 30px;
+  display: none;
+  border: 2px solid black;
+  padding: 20px 0 0 15px;
+}
+#disb {
+  font-size: 20px;
+}
+#vetopower {
+  /* color: maroon; */
+  display: none;
+  /* margin-top: 10px; */
+}
+#execact {
+  display: none;
+  /* color: maroon; */
+}
+#done {
+  margin-bottom: 25px;
+}
+#noplayers {
+  margin-top: 10px;
+}
+#actions0,#actions1,#actions2{
+  display: none;
+}
+#vetob {
+  display: none;
+}
+/* #lp1,#lp2,#lp3{
+  padding: 3px;
+  border: 1px solid black;
+} */
