@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Secret Hitler Rebrand</title>
+    <link rel="stylesheet" href="tt.css">
+    <script src="tt.js"></script>
+  </head>
+  <body>
+    <p id="heading">Secret 9B</p>
+    <div id="toprow">
+      <div id="deckhold">
+        <div id="deck">
+          Cards Present: <span id="nocards">17</span><br>
+          Discard Pile: <span id="nodcards">0</span><br>
+          Last Enacted: <span id="lasten">None</span>
+        </div>
+        <button id="db" type="button" name="draw" onclick="topthree();">Draw top 3</button>
+      </div>
+      <div id="policies">
+        <div id="goodpol">9A Rules Enforced: <span id="gr">0</span>/5</div>
+        <div id="badpol">9B Rules Enforced: <span id="br">0</span>/6</div>
+        <div id="execact">Take action: <button id="execb" type="button" name="execute" onclick="executive();">Special Election</button></div>
+        <div id="elcount">Election Counter: <span id="elnum">0</span></div>
+        <button id="eb" type="button" name="enact" onclick="enacttop();">Increase</button>
+        <div id="vetopower">Veto power is unlocked!</div>
+      </div>
+      <form id="drawn">
+        <input type="radio" id="p1" name="p" value="a">
+        <label id="lp1" for="p1">9A</label><br>
+        <input type="radio" id="p2" name="p" value="b">
+        <label id="lp2" for="p2">9B</label><br>
+        <input type="radio" id="p3" name="p" value="a">
+        <label id="lp3" for="p3">9A</label><br>
+        <button id="disb" type="button" name="discard" onclick="discardc();">Discard</button>
+        <button id="vetob" type="button" name="veto" onclick="vetofunc();">Veto</button>
+      </form>
+      <!-- <div id="elcountbox">
+      </div> -->
+    </div>
+    <hr id="done">
+    <div id="blaka">
+    Choose the amount of players
+    <form id="noplayers">
+      <input type="radio" id="p1" name="no" value="0">
+      <label id="lp1" for="p1">5-6 (2 9B students)</label><br>
+      <input type="radio" id="p2" name="no" value="1">
+      <label id="lp2" for="p2">7-8 (3 9B students)</label><br>
+      <input type="radio" id="p3" name="no" value="2">
+      <label id="lp3" for="p3">9-10 (4 9B students)</label><br>
+      <button id="noplayb" type="button" name="chooseno" onclick="numplays();">Done</button>
+    </form>
+    </div>
+    <div id="actions0">Executive actions (5 to 6 players) - <br>Policy 1: Nothing<br>Policy 2: Nothing<br>Policy 3: Deck Peek<br>Policy 4: Expel<br>Policy 5: Expel(+Veto)<br>Policy 6: 9B Wins!</div>
+    <div id="actions1">Executive actions (7 to 8 players) - <br>Policy 1: Nothing<br>Policy 2: Identity Check<br>Policy 3: Special Election<br>Policy 4: Expel<br>Policy 5: Expel(+Veto)<br>Policy 6: 9B Wins!</div>
+    <div id="actions2">Executive actions (9 to 10 players) - <br>Policy 1: Identity Check<br>Policy 2: Identity Check<br>Policy 3: Special Election<br>Policy 4: Expel<br>Policy 5: Expel(+Veto)<br>Policy 6: 9B Wins!</div>
+
+  </body>
+</html>
