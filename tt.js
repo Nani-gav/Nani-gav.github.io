@@ -11,6 +11,8 @@ let numplayers;
 // 5 to 6 players, 7 to 8 players, 9 to 10 players
 // 0-nothing, 1-policy peek, 2-investigate, 3-special election, 4-assassinate
 const numtoaction = ["nothing", "Deck Peek", "Identity Check", "Special Election", "Expel"];
+let aplaynum;
+let anumref = [5,7,9,6,8,10];
 
 shuffle(poldeck);
 console.log(poldeck);
@@ -206,8 +208,35 @@ function numplays() {
   if(selected == null){
     return alert("Select an option");
   }
-  numplayers = Number(selected.value);
+  aplaynum = anumref[Number(selected.value)];
+  numplayers = Number(selected.value)%3;
+  console.log(aplaynum);
+  console.log(numplayers);
   document.getElementById("blaka").style.display = "none";
-  document.getElementById("actions"+selected.value).style.display="block";
+  document.getElementById("actions"+numplayers).style.display="block";
+  let brukas = "";
+  let rols = [0];
+  // 0-sid, 1-9b, 2-9a
+  if(aplaynum%2 == 0){
+    for(let i = 0; i<(((aplaynum-2)/2)-1); i++){
+      rols.push(1)
+    }
+    for(let i = 0; i < (((aplaynum+2)/2)); i++){
+      rols.push(2)
+    }
+  }
+  if(aplaynum%2 == 1){
+    for(let i = 0; i<(((aplaynum-1)/2)-1); i++){
+      rols.push(1)
+    }
+    for(let i = 0; i < (((aplaynum+1)/2)); i++){
+      rols.push(2)
+    }
+  }
+  shuffle(rols);
+  for(let i = 0; i < rols.length; i++){
+    brukas += `<button id="roleviewb" type="button" onclick="alert('${rols[i]==0?"Siddarth":(rols[i]==1?"9B":"9A")}');">Player ${i+1}'s identity</button><br>`;
+  }
+  document.getElementById('rolebtns').innerHTML = brukas;
 }
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
