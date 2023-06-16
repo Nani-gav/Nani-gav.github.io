@@ -3,23 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Secret Hitler Rebrand</title>
-    <link rel="stylesheet" href="/tt.css">
-    <script src="/tt.js"></script>
+    <link rel="stylesheet" href="tt.css">
+    <script src="tt.js"></script>
+    <!-- <script src="tts.js"></script> -->
   </head>
   <body>
-    <p id="heading">Secret 9B</p>
+    <p id="heading">Secret Impostor (Amongus)</p>
     <div id="toprow">
       <div id="deckhold">
         <div id="deck">
           Cards Present: <span id="nocards">17</span><br>
           Discard Pile: <span id="nodcards">0</span><br>
-          Last Enacted: <span id="lasten">None</span>
+          Last Done: <span id="lasten">None</span>
         </div>
         <button id="db" type="button" name="draw" onclick="topthree();">Draw top 3</button>
       </div>
       <div id="policies">
-        <div id="goodpol">9A Rules Enforced: <span id="gr">0</span>/5</div>
-        <div id="badpol">9B Rules Enforced: <span id="br">0</span>/6</div>
+        <div id="goodpol">Tasks completed: <span id="gr">0</span>/5</div>
+        <div id="badpol">Sabotages done: <span id="br">0</span>/6</div>
         <div id="execact">Take action: <button id="execb" type="button" name="execute" onclick="executive();">Special Election</button></div>
         <div id="elcount">Election Counter: <span id="elnum">0</span></div>
         <button id="eb" type="button" name="enact" onclick="enacttop();">Increase</button>
@@ -27,11 +28,11 @@
       </div>
       <form id="drawn">
         <input type="radio" id="p1" name="p" value="a">
-        <label id="lp1" for="p1">9A</label><br>
+        <label id="lp1" for="p1">Task</label><br>
         <input type="radio" id="p2" name="p" value="b">
-        <label id="lp2" for="p2">9B</label><br>
+        <label id="lp2" for="p2">Sabotage</label><br>
         <input type="radio" id="p3" name="p" value="a">
-        <label id="lp3" for="p3">9A</label><br>
+        <label id="lp3" for="p3">Task</label><br>
         <button id="disb" type="button" name="discard" onclick="discardc();">Discard</button>
         <button id="vetob" type="button" name="veto" onclick="vetofunc();">Veto</button>
       </form>
@@ -43,23 +44,59 @@
     Choose the amount of players
     <form id="noplayers">
       <input type="radio" id="c1" name="no" value="0">
-      <label id="lp1" for="c1">5 (2 9B students)</label><br>
+      <label id="lp1" for="c1">5 (2 Impostors)</label><br>
         <input type="radio" id="c4" name="no" value="3">
-        <label id="lp1" for="c4">6 (2 9B students)</label><br>
+        <label id="lp1" for="c4">6 (2 Impostors)</label><br>
       <input type="radio" id="c2" name="no" value="1">
-      <label id="lp2" for="c2">7 (3 9B students)</label><br>
+      <label id="lp2" for="c2">7 (3 Impostors)</label><br>
         <input type="radio" id="c5" name="no" value="4">
-        <label id="lp1" for="c5">8 (3 9B students)</label><br>
+        <label id="lp1" for="c5">8 (3 Impostors)</label><br>
       <input type="radio" id="c3" name="no" value="2">
-      <label id="lp3" for="c3">9 (4 9B students)</label><br>
+      <label id="lp3" for="c3">9 (4 Impostors)</label><br>
         <input type="radio" id="c6" name="no" value="5">
-        <label id="lp1" for="c6">10 (4 9B students)</label><br>
+        <label id="lp1" for="c6">10 (4 Impostors)</label><br>
       <button id="noplayb" type="button" name="chooseno" onclick="numplays();">Done</button>
     </form>
     </div>
-    <div id="actions0">Executive actions (5 to 6 players) - <br>Policy 1: Nothing<br>Policy 2: Nothing<br>Policy 3: Deck Peek<br>Policy 4: Expel<br>Policy 5: Expel(+Veto)<br>Policy 6: 9B Wins!</div>
-    <div id="actions1">Executive actions (7 to 8 players) - <br>Policy 1: Nothing<br>Policy 2: Identity Check<br>Policy 3: Special Election<br>Policy 4: Expel<br>Policy 5: Expel(+Veto)<br>Policy 6: 9B Wins!</div>
-    <div id="actions2">Executive actions (9 to 10 players) - <br>Policy 1: Identity Check<br>Policy 2: Identity Check<br>Policy 3: Special Election<br>Policy 4: Expel<br>Policy 5: Expel(+Veto)<br>Policy 6: 9B Wins!</div>
+    <div id="actions0">Executive actions (5 to 6 players) - <br>Policy 1: Nothing<br>Policy 2: Nothing<br>Policy 3: Task Peek<br>Policy 4: Eject<br>Policy 5: Eject(+Veto)<br>Policy 6: Impostors Win!</div>
+    <div id="actions1">Executive actions (7 to 8 players) - <br>Policy 1: Nothing<br>Policy 2: Identity Check<br>Policy 3: Special Election<br>Policy 4: Eject<br>Policy 5: Eject(+Veto)<br>Policy 6: Impostors Win!</div>
+    <div id="actions2">Executive actions (9 to 10 players) - <br>Policy 1: Identity Check<br>Policy 2: Identity Check<br>Policy 3: Special Election<br>Policy 4: Eject<br>Policy 5: Eject(+Veto)<br>Policy 6: Impostors Win!</div>
     <div id="rolebtns"></div>
   </body>
 </html>
+
+<!-- Secret Ninebee:
+Two teams, crewmates and impostors. One 9b is shankar
+crewmates forms the majority. impostors should try to stay hidden
+
+Setup:
+Everyone gets their roles. impostors know who everyone is but crewmates do not
+One person becomes the meeting head (at random)
+
+game description:
+players take turns implementing a policy chosen semi-randomly from a deck. The deck consists of 11 sabotages (benefit impostors) and 6 tasks (benefit cremates). the impostors win if 6 sabotages are done while the crewmates win if 5 tasks are completed.
+
+Gameplay:
+Each turn has three parts, election, policy implementing, and actions
+
+Election:
+The meeting head nominates a taskdoer and everyone votes on whether the pair is elected.
+If the vote fails the turn restarts with new meeeting head. (if the vote fails 3 times in a row the top action is taken. There is a higher probabilty this is a sabotage)
+If vote succeeds, move to the policy implementing stage
+
+Policy implementing:
+The meeting head chooses the top three actions. He discards one and hands the rest to the taskdoer. The taskdoer does one and discards the other. What each player does is a secret. The meeting head and taskdoer can lie about what cards they got.
+
+Actions:
+If its a task, nothing happens now. Start the next turn. If it is a sabotage, the class leader may get to do a special action, expelling a student. This happens now. The actions are specified by the game
+
+Winning the game:
+9a wins if they complete 5 tasks or eject shankar
+9b wins if they sabotage 6 times or elect shankar taskdoer AFTER 3 sabotages are done
+
+Strategy notes (*these are only if ur starting out the game, after you play enough you will be able to form ur own strategy):
+1. Players gain information about others in the following ways. a) Who the meeeting had nominates, b) How people vote c) Whether a task or sabotage d) The action a leader takes
+
+Crewmates usually have no reason to vote at the beginning of the game so doing it is sus
+If a sabotage happens, there are three causes:
+Three sabotages were drawn, the meething head discarded a task, or the taskdoer discarded a tsask. You have to reason out the right cause -->
