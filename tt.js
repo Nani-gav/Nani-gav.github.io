@@ -10,7 +10,7 @@ const actionslist = [[0,0,1,4,4],[0,2,3,4,4],[2,2,3,4,4]];
 let numplayers;
 // 5 to 6 players, 7 to 8 players, 9 to 10 players
 // 0-nothing, 1-policy peek, 2-investigate, 3-special election, 4-assassinate
-const numtoaction = ["nothing", "Deck Peek", "Identity Check", "Special Election", "Expel"];
+const numtoaction = ["nothing", "Task Peek", "Identity Check", "Special Election", "Eject"];
 let aplaynum;
 let anumref = [5,7,9,6,8,10];
 
@@ -42,11 +42,11 @@ function topthree(){
   p2 = document.getElementById("lp2");
   p3 = document.getElementById("lp3");
   // why are there variables here
-  p1.innerHTML = poldeck[indextop]?"9B":"9A";
+  p1.innerHTML = poldeck[indextop]?"Sabotage":"Task";
   p1.style.color = poldeck[indextop]?"maroon":"royalblue";
-  p2.innerHTML = poldeck[indextop-1]?"9B":"9A";
+  p2.innerHTML = poldeck[indextop-1]?"Sabotage":"Task";
   p2.style.color = poldeck[indextop-1]?"maroon":"royalblue";
-  p3.innerHTML = poldeck[indextop-2]?"9B":"9A";
+  p3.innerHTML = poldeck[indextop-2]?"Sabotage":"Task";
   p3.style.color = poldeck[indextop-2]?"maroon":"royalblue";
   document.getElementById("nocards").innerHTML = (indextop+1)-3;
 }
@@ -57,7 +57,7 @@ function enacttop(){
   if(numbero<3){
     elco.innerHTML = numbero+1;
     if(numbero==2){
-      document.getElementById("eb").innerHTML = "Enact top policy";
+      document.getElementById("eb").innerHTML = "Task top action";
     }
     return;
   }
@@ -73,7 +73,7 @@ function enacttop(){
     document.getElementById("nodcards").innerHTML = "0";
   }
   const lasten = document.getElementById("lasten")
-  lasten.innerHTML = poldeck[indextop]?"9B":"9A";
+  lasten.innerHTML = poldeck[indextop]?"Sabotage":"Task";
   lasten.style.color = poldeck[indextop]?"maroon":"royalblue";
   let chang = document.getElementById(poldeck[indextop]?"br":"gr");
   if(poldeck[indextop]) fpol++; else libpol++;
@@ -82,8 +82,8 @@ function enacttop(){
   document.getElementById("nocards").innerHTML = indextop+1;
     document.getElementById("eb").innerHTML = "Increase";
     elco.innerHTML = "0";
-  if(libpol>=5)return alert("9A wins!!!");
-  else if(fpol>=6)return alert("9B wins!!!");
+  if(libpol>=5)return alert("The crewmates win!!!");
+  else if(fpol>=6)return alert("The impostors win!!!");
   if(fpol==5){
     veto = true;
     document.getElementById("vetopower").style.display="block";
@@ -117,7 +117,7 @@ function select(){
     return alert("Select one to enact");
   }
   const lasten = document.getElementById("lasten")
-  lasten.innerHTML = selected.value=="b"?"9B":"9A";
+  lasten.innerHTML = selected.value=="b"?"Sabotage":"Task";
   lasten.style.color = selected.value=="b"?"maroon":"royalblue";
   let chang = document.getElementById(selected.value=="b"?"br":"gr");
   if(selected.value=="b") fpol++; else libpol++;
@@ -138,8 +138,8 @@ function select(){
     document.getElementById("eb").innerHTML = "Increase";
     document.getElementById("elnum").innerHTML = "0";
       document.getElementById("vetob").style.display = "none";
-  if(libpol>=5)return alert("9A wins!!!");
-  else if(fpol>=6)return alert("9B wins!!!");
+  if(libpol>=5)return alert("The crewmates win!!!");
+  else if(fpol>=6)return alert("The impostors win!!!");
   if(selected.value=="b"){
     let agshun = actionslist[numplayers][fpol-1];
     if(agshun==0) return;
@@ -167,12 +167,12 @@ function executive(){
   document.getElementById("execact").style.display="none";
   const zazi = document.getElementById("execb").innerHTML;
   if(zazi == "Identity Check"){
-    return alert("The class leader may learn the class (but not role) of any one player.");
-  }else if(zazi == "Expel"){
-    return alert("The class leader can expel any player from the class (and the game). If the player is See-Darth, the 9A students win.");
+    return alert("The meeting head may learn the alignment (but not role) of any one player.");
+  }else if(zazi == "Eject"){
+    return alert("The meeting head can eject any player from the ship (and the game). If the player is Shankar, the crewmates students win.");
   }else if(zazi == "Special Election"){
-    return alert("The class leader can choose the class leader for the next turn. After the special election, leadership goes back to the person who would have originally gotten it.");
-  }else if(zazi == "Deck Peek"){
+    return alert("The meeting head can choose the meeting head for the next turn. After the special election, leadership goes back to the person who would have originally gotten it.");
+  }else if(zazi == "Task Peek"){
     if(indextop<2){
       poldeck = [];
       for(let i = 0; i < 6-libpol; i++)
@@ -185,7 +185,7 @@ function executive(){
       document.getElementById("nocards").innerHTML = indextop+1;
       document.getElementById("nodcards").innerHTML = "0";
     }
-    return alert(`The top three cards on the policy deck are: ${poldeck[indextop]?"9B":"9A"}, ${poldeck[indextop-1]?"9B":"9A"}, ${poldeck[indextop-2]?"9B":"9A"}`);
+    return alert(`The top three actions on the actions list are: ${poldeck[indextop]?"Sabotage":"Task"}, ${poldeck[indextop-1]?"Sabotage":"Task"}, ${poldeck[indextop-2]?"Sabotage":"Task"}`);
   }
 }
 
@@ -235,7 +235,7 @@ function numplays() {
   }
   shuffle(rols);
   for(let i = 0; i < rols.length; i++){
-    brukas += `<button id="roleviewb" type="button" onclick="alert('${rols[i]==0?"Siddarth":(rols[i]==1?"9B":"9A")}');">Player ${i+1}'s identity</button><br>`;
+    brukas += `<button id="roleviewb" type="button" onclick="alert('${rols[i]==0?"Shankar":(rols[i]==1?"Impostor":"Crewmate")}');">Player ${i+1}'s identity</button><br>`;
   }
   document.getElementById('rolebtns').innerHTML = brukas;
 }
